@@ -19,7 +19,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
            ORDER BY u.id, s.started_at_utc DESC
         )
         ORDER BY started_at_utc DESC""", nativeQuery = true)
-    List<User> getUsersWithAtLeastOneMobileSession(DeviceType deviceType);
+    List<User> getUsersWithAtLeastOneMobileSession();
 
     @Query(value = """
         SELECT u.* FROM users AS u

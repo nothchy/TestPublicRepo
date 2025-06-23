@@ -24,7 +24,7 @@ public class UserService {
 
     // Returns Users that have at least 1 Mobile session
     public List<UserResponseDTO> getUsersWithAtLeastOneMobileSession() {
-        List<User> rep = userRepository.getUsersWithAtLeastOneMobileSession(null);
+        List<User> rep = userRepository.getUsersWithAtLeastOneMobileSession();
         return rep.stream().map(userMapper::toDto).toList();
     }
 }

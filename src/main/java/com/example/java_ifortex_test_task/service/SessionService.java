@@ -17,12 +17,12 @@ public class SessionService {
 
     // Returns the first (earliest) desktop Session
     public SessionResponseDTO getFirstDesktopSession() {
-        return sessionMapper.toDto(sessionRepository.getFirstDesktopSession(null));
+        return sessionMapper.toDto(sessionRepository.getFirstDesktopSession());
     }
 
     // Returns only Sessions from Active users that were ended before 2025
     public List<SessionResponseDTO> getSessionsFromActiveUsersEndedBefore2025() {
-        List<Session> rep = sessionRepository.getSessionsFromActiveUsersEndedBefore2025(null);
+        List<Session> rep = sessionRepository.getSessionsFromActiveUsersEndedBefore2025();
         return rep.stream().map(sessionMapper::toDto).toList();
     }
 }

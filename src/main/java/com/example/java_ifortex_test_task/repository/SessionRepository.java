@@ -14,12 +14,12 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
         WHERE device_type = 2
         ORDER BY started_at_utc DESC
         LIMIT 1""", nativeQuery = true)
-    Session getFirstDesktopSession(DeviceType deviceType);
+    Session getFirstDesktopSession();
 
     @Query(value = """
         SELECT s.id, device_type - 1 AS device_type, ended_at_utc, started_at_utc, user_id FROM sessions AS s
         JOIN users AS u ON s.user_id = u.id
         WHERE u.deleted = false AND s.ended_at_utc < '2025-01-01'
         ORDER BY s.started_at_utc DESC""", nativeQuery = true)
-    List<Session> getSessionsFromActiveUsersEndedBefore2025(LocalDateTime endDate);
+    List<Session> getSessionsFromActiveUsersEndedBefore2025();
 }
